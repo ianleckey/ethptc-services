@@ -1,0 +1,11 @@
+name = "ethptc-services"
+main = "src/index.ts"
+compatibility_date = "2023-02-13"
+usage_model = "bundled"
+env = { }
+
+[triggers]
+crons = [ ]
+
+[vars]
+FPKEY = "40c25d7d19914c42f3bc93eb89c090a4d244b2f4990af8a2a985f13af951f86c"
