@@ -7,7 +7,7 @@ const CheckAddress = async request => {
     const fpResponse = await (
         await fetch('https://faucetpay.io/api/v1/checkaddress', {
             method: 'post',
-            body: 'api_key='+ FPKEY +'&address='+ address,
+            body: 'api_key='+ env.FPKEY +'&address='+ address,
             headers: { 'Content-type': 'application/x-www-form-urlencoded' }
         })
     ).json()
