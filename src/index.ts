@@ -1,5 +1,4 @@
 import { Router } from 'itty-router';
-
 import CheckAddress from './handlers/checkaddress';
 
 const router = Router();
@@ -9,5 +8,10 @@ router
     .get('*', () => new Response('Not found', { status: 404 }));
 
 export default {
-	fetch: router.handle,
-};
+	fetch: (request, env, context) => router.handle(request, env, context).then(response => {
+		return response
+	}).catch(err => {
+		// and do something with the errors here, like logging, error status, etc
+		console.log(err)
+	})
+}
