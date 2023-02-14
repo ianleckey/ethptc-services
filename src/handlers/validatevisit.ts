@@ -2,7 +2,8 @@ import { createClient } from '@supabase/supabase-js'
 
 const processRules = ( visit ) => {
 
-    console.log(visit)
+    if(visit.campaigns.status !== 'active') 
+        return false
 
     if(visit.status == 'pending')
         return true
@@ -40,7 +41,6 @@ const ValidateVisit = async (request, env, context) => {
 
     /**
      * @todo
-     * make sure campaign status is `active`
      * pg trigger to set campaign status `complete` upon X confirmed visits
      */
 
@@ -49,7 +49,8 @@ const ValidateVisit = async (request, env, context) => {
         .select(`
             created_at, finished_at, status, user_id, 
             campaigns( 
-                visit_duration
+                visit_duration,
+                status
             )
         `)
         .eq('id', visit_id)
