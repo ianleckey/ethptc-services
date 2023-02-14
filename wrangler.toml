@@ -8,5 +8,4 @@ env = { }
 crons = [ ]
 
 [vars]
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR0bWRyZ2N3b3pwbHV6cWlwZGNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzYxNTU4MTIsImV4cCI6MTk5MTczMTgxMn0.IJ405uDjq3Kg_xfC7yXVUUiMFI-iNxbsEhMURzFF4rI"
 SUPABASE_URL = "https://dtmdrgcwozpluzqipdcg.supabase.co"
