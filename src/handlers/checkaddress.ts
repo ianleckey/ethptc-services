@@ -1,5 +1,3 @@
-const checkaddress = {};
-
 const CheckAddress = async (request, env, context) => {
     // This will be used soon to retrieve a post
     const address = request.params.address;
