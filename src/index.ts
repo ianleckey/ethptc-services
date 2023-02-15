@@ -3,6 +3,7 @@ import { createCors } from 'itty-cors'
 
 import CheckAddress from './handlers/checkaddress';
 import ValidateVisit from './handlers/validatevisit';
+import Payment from './handlers/payment';
 
 // create CORS handlers
 const { preflight, corsify } = createCors()
@@ -13,6 +14,7 @@ router
 	.all('*', preflight)
     .get('/api/checkaddress/:address', CheckAddress)
 	.get('/api/validatevisit/:campaign_id/:visit_id', ValidateVisit)
+	.get('/api/payment/:campaign_id', Payment)
     .get('*', () => new Response('Not found', { status: 404 }));
 
 export default {
