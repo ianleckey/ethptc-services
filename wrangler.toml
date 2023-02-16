@@ -8,4 +8,5 @@ env = { }
 crons = [ ]
 
 [vars]
+FP_ADDRESS = "0x7e809990dCF3AA31F09624C18D74b469FE6b9168"
 SUPABASE_URL = "https://dtmdrgcwozpluzqipdcg.supabase.co"
