@@ -5,7 +5,7 @@ usage_model = "bundled"
 env = { }
 
 [triggers]
-crons = [ ]
+crons = [ "*/10 * * * *" ]
 
 [vars]
 FP_ADDRESS = "0x7e809990dCF3AA31F09624C18D74b469FE6b9168"

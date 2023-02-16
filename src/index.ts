@@ -5,6 +5,7 @@ import CheckAddress from './handlers/checkaddress';
 import ValidateVisit from './handlers/validatevisit';
 import Payment from './handlers/payment';
 import PoofWebhook from './handlers/poofwebhook';
+import PayConfirmedVisits from './scheduled/payconfirmedvisits';
 
 // create CORS handlers
 const { preflight, corsify } = createCors()
@@ -20,6 +21,9 @@ router
     .get('*', () => new Response('Not found', { status: 404 }));
 
 export default {
+	async scheduled(event, env, context) {
+		ctx.waitUntil( PayConfirmedVisits );
+	},
 	fetch: (request, env, context) => router
 		.handle(request, env, context)
 		.catch(err => {
