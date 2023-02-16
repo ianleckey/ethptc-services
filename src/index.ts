@@ -17,12 +17,11 @@ router
     .get('/api/checkaddress/:address', CheckAddress)
 	.get('/api/validatevisit/:campaign_id/:visit_id', ValidateVisit)
 	.get('/api/payment/:campaign_id', Payment)
-	.post('/api/poof/webhook', PoofWebhook)
-    .get('*', () => new Response('Not found', { status: 404 }));
+	.post('/api/poof/webhook', PoofWebhook);
 
 export default {
 	async scheduled(event, env, context) {
-		ctx.waitUntil( PayConfirmedVisits );
+		context.waitUntil( PayConfirmedVisits );
 	},
 	fetch: (request, env, context) => router
 		.handle(request, env, context)

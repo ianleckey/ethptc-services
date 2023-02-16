@@ -70,6 +70,10 @@ const PayConfirmedVisits = async (event, env, context) => {
         data.forEach = ( (visit) => {
             payVisit(visit, env, supabase)
         })
+    } else {
+
+        return new Response(JSON.stringify({ success: false, message: 'nothing to do' }), { status: 200 });
+
     }
 
 };

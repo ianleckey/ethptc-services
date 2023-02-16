@@ -4,11 +4,11 @@ import { createClient } from '@supabase/supabase-js'
 const getPrice = (visits, visit_duration) => {
 
     const durations = {
-        10: '0.002',
-        20: '0.0025',
-        30: '0.0030',
-        40: '0.0035',
-        60: '0.0045'
+        10: '0.0025',
+        20: '0.003',
+        30: '0.0035',
+        40: '0.004',
+        60: '0.005'
     }
 
     let totalUsd = (durations[visit_duration] * visits).toPrecision(2) / 1
