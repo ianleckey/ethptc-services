@@ -40,7 +40,6 @@ const getTotalCampaignVisits = async (campaign_id, env) => {
         .eq('campaign_id', campaign_id)
         .or(`status.eq.paid,status.eq.confirmed,and(campaign_id.eq.${campaign_id}`)
 
-    console.log(count)
     return count
 }
 
@@ -100,6 +99,13 @@ const ValidateVisit = async (request, env, context) => {
                 .from('visits')
                 .update({
                     status: 'confirmed'
+                })
+                .eq('id', visit_id)
+        } else {
+            await supabase
+                .from('visits')
+                .update({
+                    status: 'invalid'
                 })
                 .eq('id', visit_id)
         }
