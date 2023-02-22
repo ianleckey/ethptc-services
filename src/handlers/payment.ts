@@ -4,11 +4,11 @@ import { createClient } from '@supabase/supabase-js'
 const getPrice = (visits, visit_duration) => {
 
     const durations = {
-        10: '0.0025',
-        20: '0.003',
         30: '0.0035',
         40: '0.004',
-        60: '0.005'
+        50: '0.0045',
+        60: '0.005',
+        120: '0.01'
     }
 
     let totalUsd = (durations[visit_duration] * visits).toPrecision(2) / 1
@@ -94,7 +94,7 @@ const Payment = async (request, env, context) => {
         const options = {
             method: 'POST',
             headers: {
-              'Authorization': env.POOF_KEY,
+              'Authorization': env.POOF_API_KEY,
               'content-type': 'application/json'
             },
             body: JSON.stringify({metadata: { campaign_id: campaign_id }, amount: price, crypto: 'ethereum'})

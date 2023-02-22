@@ -50,6 +50,7 @@ const campaignComplete = async (campaign_id, env) => {
     await supabase
         .from('campaigns')
         .update({
+            finished: new Date().toISOString(),
             status: 'complete'
         })
         .eq('id', campaign_id)
