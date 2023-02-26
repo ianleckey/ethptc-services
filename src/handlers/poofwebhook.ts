@@ -51,11 +51,12 @@ const PoofWebhook = async (request, env, context) => {
 
     console.log('ethpaid: ' + ethPaid)
 
-    const bid = (ethPaid / campaign.visits).toPrecision(8)
+    const bid = (ethPaid / campaign.visits).toFixed(8)
     /** take 50% of eth paid to move to faucet */
-    const userPayoutTotal = (ethPaid / 2).toPrecision(8)
+    const userPayoutTotal = (ethPaid / 2).toFixed(8)
+    const userPayoutMinusTxFee = userPayoutTotal - 0.0007; /** historically high tx fee */
     /** calculate individual visit payout amount */
-    const ppv = (userPayoutTotal / campaign.visits).toPrecision(8)
+    const ppv = (userPayoutMinusTxFee / campaign.visits).toFixed(8)
 
     /** update campaign data */
     let {data, error } = await supabase 
@@ -96,7 +97,7 @@ const PoofWebhook = async (request, env, context) => {
           'content-type': 'application/json'
         },
         body: JSON.stringify({
-          amount: (ethPaid / 2).toPrecision,
+          amount: (ethPaid / 2).toPrecision(8),
           crypto: 'ethereum',
           address: env.FP_ADDRESS
         })
